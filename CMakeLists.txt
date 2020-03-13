@@ -3,4 +3,4 @@ project(speller)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(speller sources/main.cpp sources/BTrie.cpp sources/vectorCheker.cpp sources/HashTable.cpp sources/Cheker.cpp)
+add_executable(speller sources/main.cpp sources/BTrie.cpp sources/vectorCheker.cpp sources/HashTable.cpp sources/Cheker.cpp sources/BTSCheker.cpp)

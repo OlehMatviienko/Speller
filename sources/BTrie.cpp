@@ -6,9 +6,7 @@
 #include "../headers/BTrie.h"
 
 
-BTrie::BTrie() {
-    root = new bnode();
-}
+
 short int BTrie::hash(const char letter){
     // assign the last position to the apostrophe
     if (letter == '\'')

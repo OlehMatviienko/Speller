@@ -6,13 +6,11 @@ struct bnode
     struct bnode* children[27];
 };
 
-class BTrie: public Cheker {
+class BTrie : public Cheker {
 public:
-    BTrie();
+    BTrie():  root(new bnode()){};
     short int hash(const char letter);
     void add(std::string input) override;
     void find(std::string input) override;
     bnode* root;
-    int badwords = 0;
-    int AmountOfWords = 0;
 };

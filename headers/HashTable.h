@@ -11,6 +11,5 @@ public:
     unsigned long int hash(std::string input);
     void add(std::string input) override;
     void find(std::string input) override;
-    int badwords = 0;
-    int AmountOfWords = 0;
+
 };
