@@ -18,20 +18,22 @@ short int BTrie::hash(const char letter){
     return tolower(letter) - 97;
 }
 
-void BTrie::add(std::string input) {
-    bnode* node = root;
-    for (int i = 0; i < input.size(); i++)
-    {
-        char a = input[i];
-        short int key = hash(a);
-        if (node->children[key] == 0)
-        {
-            node->children[key] = new bnode();
-        }
-        node = node->children[key];
+void BTrie::add(std::vector<std::string> input) {
+    for(int i=0;i<input.size();i++) {
+        bnode *node = root;
+        std::string temp=input[i];
+        for (int k = 0; k < temp.size(); k++) {
+            char c = temp[k];
+            short int key = hash(c);
+            if (node->children[key] == 0)
+            {
+                node->children[key] = new bnode();
+            }
+            node = node->children[key];
 
+        }
+        node->is_word = true;
     }
-    node->is_word = true;
 }
 
 void BTrie::find(std::string input) {
@@ -42,11 +44,10 @@ void BTrie::find(std::string input) {
         AmountOfWords++;
         bnode* node = root;
         bool breaked = false;
-        for (int i = 0; i < s.size(); i++)
+        for (char a : s)
         {
-            char a = s[i];
             short int key = hash(a);
-            if (node->children[key] == 0)
+            if (node->children[key] == nullptr)
             {
                 badwords++;
                 breaked = true;
@@ -55,7 +56,7 @@ void BTrie::find(std::string input) {
             node = node->children[key];
 
         }
-        if (!breaked && node->is_word == false)
+        if (!breaked && !node->is_word)
         {
             badwords++;
         }

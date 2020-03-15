@@ -8,8 +8,8 @@ public:
     MyHashTable();
     std::vector<std::list<std::string>> HashTable;
     int size = 15000;
-    unsigned long int hash(std::string input);
-    void add(std::string input) override;
+    unsigned int hash(std::string input);
+    void add(std::vector<std::string> input) override;
     void find(std::string input) override;
 
 };

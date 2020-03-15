@@ -1,5 +1,7 @@
 
 #include <sstream>
+#include <algorithm>
+#include <random>
 
 #include "../headers/BTSCheker.h"
 
@@ -7,47 +9,44 @@
 node* BTS::CreateNode(std::string data) {
     node* newnode = new node;
     newnode->data = data;
-    newnode->left = NULL;
-    newnode->right = NULL;
+    newnode->left = nullptr;
+    newnode->right = nullptr;
     return newnode;
 }
 
-void BTS::add(std::string data) {
-    // Create node using data from argument list.
-    node* temp = CreateNode(data);
-    node* t = new node;
-    t = root;
+void BTS::add(std::vector<std::string> input) {
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(input.begin(), input.end(), g);
+    for(const auto& data : input) {
+        // Create node using data from argument list.
+        node *temp = CreateNode(data);
+        node *t = new node;
+        t = root;
 
-    // If root is null, assign it to the node created.
-    if (root == NULL)
-        root = temp;
-    else
-    {
-        // Find the position for the new node to be inserted.
-        while (t != NULL)
-        {
-            if (t->data.compare(data) > 0)
-            {
-                if (t->right == NULL)
-                {
-                    // If current node is NULL then insert the node.
-                    t->right = temp;
-                    break;
+        // If root is null, assign it to the node created.
+        if (root == nullptr)
+            root = temp;
+        else {
+            // Find the position for the new node to be inserted.
+            while (t != nullptr) {
+                if (t->data.compare(data) > 0) {
+                    if (t->right == nullptr) {
+                        // If current node is NULL then insert the node.
+                        t->right = temp;
+                        break;
+                    }
+                    // Shift pointer to the left.
+                    t = t->right;
+                } else if (t->data.compare(data) <= 0) {
+                    if (t->left == nullptr) {
+                        // If current node is NULL then insert the node.
+                        t->left = temp;
+                        break;
+                    }
+                    // Shift pointer to the left.
+                    t = t->left;
                 }
-                // Shift pointer to the left.
-                t = t->right;
-            }
-
-            else if (t->data.compare(data) <= 0)
-            {
-                if (t->left == NULL)
-                {
-                    // If current node is NULL then insert the node.
-                    t->left = temp;
-                    break;
-                }
-                // Shift pointer to the left.
-                t = t->left;
             }
         }
     }

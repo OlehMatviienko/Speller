@@ -4,9 +4,11 @@
 
 #include "../headers/HashTable.h"
 
-void MyHashTable::add(std::string input) {
-    int index = hash(input);
-    HashTable[index].push_back(input);
+void MyHashTable::add(std::vector<std::string> input) {
+    for( auto& data : input) {
+        int index = hash(data);
+        HashTable[index].push_back(data);
+    }
 
 }
 
@@ -14,9 +16,9 @@ MyHashTable::MyHashTable() {
     HashTable.resize(size);
 }
 
-unsigned long int MyHashTable::hash(std::string input) {
+unsigned int MyHashTable::hash(std::string input) {
     //djb2 Algorithm
-    unsigned long int hash;
+    unsigned hash;
     int c;
 
     hash = 5381;
@@ -40,12 +42,12 @@ void MyHashTable::find(std::string input)
         int k = hash(s);
         for (auto x : HashTable[k])
         {
-            if (x.compare(s)==0){
+            if (x==s){
                 found = true;
                 break;
             }
         }
-        if (found == false) {
+        if (!found) {
             badwords++;
         }
     }

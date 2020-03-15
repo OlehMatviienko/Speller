@@ -14,7 +14,7 @@ public:
 
     BTS() :  root(NULL) {badwords=0;};
 
-    void add(std::string input) override;
+    void add(std::vector<std::string> input) override;
 
     void find(std::string input) override;
 

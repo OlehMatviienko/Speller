@@ -20,7 +20,7 @@ void vectorCheker::find(std::string input) {
 
     }
 }
-void vectorCheker::add(std::string input)
+void vectorCheker::add(std::vector<std::string> input)
 {
-    vectorV.push_back(input);
+    vectorV = input;
 };

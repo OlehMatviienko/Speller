@@ -1,16 +1,23 @@
 #include <algorithm>
+#include <cxxabi.h>
 
 #include "../headers/Cheker.h"
 
 std::string Cheker::transform(std::string input)
 {
     std::transform(input.begin(), input.end(), input.begin(), ::tolower);
-    for (int i = 0; i < input.size(); i++)
+    for (char & i : input)
     {
-        char a = input[i];
+        char a = i;
         if (a <= 96 || a >= 122)
             if(a!= '\'')
-                input[i] = ' ';
+                i = ' ';
     }
     return input;
 }
+
+const std::string Cheker::getNameClass() {
+    return abi::__cxa_demangle(typeid(*this).name(),0,0,0);
+}
+
+
