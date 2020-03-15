@@ -3,9 +3,6 @@
 #include <fstream>
 #include <chrono>
 #include <memory>
-#include <random>
-#include <algorithm>
-#include <typeinfo>
 
 #include "../headers/HashTable.h"
 #include "../headers/BTrie.h"
