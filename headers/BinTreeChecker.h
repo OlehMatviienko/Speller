@@ -3,7 +3,7 @@
 #include <memory>
 #include "Checker.h"
 
-struct node
+struct node //node of BinTree
 {
     std::string data;
     std::shared_ptr<node> left;
@@ -12,9 +12,6 @@ struct node
 
 class BTS : public Checker {
 public:
-
-    BTS() {badwords=0;};
-
     void add(std::vector<std::string> input) override;
     void find(std::string input) override;
 

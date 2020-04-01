@@ -11,6 +11,6 @@ public:
     void find(std::string input) override;
 
     std::vector<std::list<std::string>> HashTable;
-    int size = 15000;
-    unsigned int hash(std::string input);
+    int size = 15000; // size of std::vector in HashTable
+    unsigned int hash(std::string input); // dbj2 hash function
 };
